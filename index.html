@@ -108,7 +108,7 @@
         <input type="tel" id="phone" name="phone" placeholder="" required>
 
 		<label for="mobilePhone">Téléphone Portable</label>
-        <input type="tel" id="mobilePhone" name="mobilePhone" required>
+        <input type="tel" id="mobilePhone" name="mobilePhone">
 
         <label for="email">Adresse e-mail</label>
         <input type="email" id="email" name="email" placeholder="" required>
@@ -133,7 +133,7 @@
 
     <!-- Début du script -->
     <script>
-        const form = document.getElementById('signatureForm');
+		const form = document.getElementById('signatureForm');
         const output = document.getElementById('signatureOutput');
 		const showSignature = document.getElementById('showSignature');
 
@@ -148,7 +148,7 @@
             const email = document.getElementById('email').value;
 
 			// Informations par défaut
-			const logoPath = 'logo.png'; // Chemin relatif vers le logo
+			//const logoPath = 'logo.png'; // Chemin relatif vers le logo
 			const nomPP = 'Préfecture de Police des Bouches-du-Rhône';
 			const address = 'Place Félix Baret - CS 80001 - 13282 MARSEILLE CEDEX 06';
 			const website = 'http://www.bouches-du-rhone.pref.gouv.fr';
@@ -159,7 +159,7 @@
 			const signature = `
                 <table>
                     <tr>
-                        <td><img src="${logoPath}" alt="Logo" class="logo"></td>
+                        <td><img src="https://raw.githubusercontent.com/MI-PP13/Signature-v1/main/logo.png" alt="Logo" class="logo"></td>
                         <td>
                             <p>${name}</p>
                             <p>${position}</p>
@@ -168,7 +168,7 @@
                             <p>Courriel: <a href="mailto:${email}">${email}</a></p></br>
                             <p>${address}</p>
 							<p><a href="${website}">${website}</a></p>
-                            <p><img src="x.png" alt="X" class="social-logo"> : ${socialMedia} | <img src="fb.png" alt="Facebook" class="social-logo"> : ${facebookPage}</p>
+                            <p><img src="https://raw.githubusercontent.com/MI-PP13/Signature-v1/main/x.png" alt="X" class="social-logo"> : ${socialMedia} | <img src="https://raw.githubusercontent.com/MI-PP13/Signature-v1/main/fb.png" alt="Facebook" class="social-logo"> : ${facebookPage}</p>
                         </td>
                     </tr>
                 </table>
@@ -176,15 +176,15 @@
 
 
             // Afficher la signature générée
-	           
 			output.innerHTML= signature;
+		
 			// Récupérer le bouton
-const exportSignature = document.getElementById('exportSignature');
-// Ajouter un événement au clic du bouton
-exportSignature.addEventListener('click', () => {
-  // Appeler la fonction exportSignatureToHTML
-  exportSignatureToHTML();
-});   
+			const exportSignature = document.getElementById('exportSignature');
+			// Ajouter un événement au clic du bouton
+			exportSignature.addEventListener('click', () => {
+			  // Appeler la fonction exportSignatureToHTML
+			  exportSignatureToHTML();
+			});   
 
         });
 
@@ -206,17 +206,16 @@ exportSignature.addEventListener('click', () => {
 		});
 		
 		// Fonction pour exporter la signature seule dans une nouvelle fenêtre HTML
-function exportSignatureToHTML() {
-  // Récupérer le code HTML de la signature
-  let signatureHTML = output.innerHTML;
-  // Ouvrir une nouvelle fenêtre
-  let newWindow = window.open('', '_blank');
-  // Insérer le code HTML de la signature dans le document de la nouvelle fenêtre
-  newWindow.document.write(signatureHTML);
-  // Appliquer le style CSS du document actuel au document de la nouvelle fenêtre
-  newWindow.document.head.appendChild(document.querySelector('style').cloneNode(true));
-}
-		
+		function exportSignatureToHTML() {
+		  // Récupérer le code HTML de la signature
+		  let signatureHTML = output.innerHTML;
+		  // Ouvrir une nouvelle fenêtre
+		  let newWindow = window.open('', '_blank');
+		  // Insérer le code HTML de la signature dans le document de la nouvelle fenêtre
+		  newWindow.document.write(signatureHTML);
+		  // Appliquer le style CSS du document actuel au document de la nouvelle fenêtre
+		  newWindow.document.head.appendChild(document.querySelector('style').cloneNode(true));
+		}
 		
     </script>
     <!-- Fin du script -->
